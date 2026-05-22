@@ -1,7 +1,7 @@
 # Tienda de Alimentos para Perritos - DevOps
 
 Aplicación web de gestión de productos para una tienda de alimentos para mascotas, desplegada en AWS con contenedores Docker y pipeline CI/CD automatizado con GitHub Actions.
-
+```
 ## Estructura del proyecto
 ActividadDocker/
 ├── frontend/          # Interfaz web (Nginx)
@@ -21,7 +21,7 @@ ActividadDocker/
 │   ├── cicd-tienda-backend.yml
 │   └── cicd-tienda-db.yml
 └── docker-compose.yml # Stack completo
-
+```
 ## Contenedorización
 
 Cada servicio tiene su propio Dockerfile con **multi-stage build**, usuario no root y buenas prácticas de seguridad.
