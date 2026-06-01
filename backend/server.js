@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const {
-  DB_HOST = "db",
+  DB_HOST = "10.0.146.254", // acá colocar la IP Privada EC2 DB
   DB_USER = "root",
   DB_PASSWORD = "admin123",
   DB_NAME = "tienda_perritos",
@@ -84,7 +84,7 @@ app.post("/api/productos", async (req, res) => {
     const [rows] = await pool.query("SELECT id, nombre, descripcion, precio, stock FROM productos WHERE id = ?", [nuevoId]);
     res.status(201).json(rows[0]);
   } catch (err) {
-    handleError(res, err, "No se pudo crear el producto.");
+    handleError(res, err, "No se pudo crear el Producto.");
   }
 });
 
@@ -94,7 +94,7 @@ app.put("/api/productos/:id", async (req, res) => {
   const { nombre, descripcion, precio, stock } = req.body;
 
   if (!nombre || precio == null || stock == null) {
-    return res.status(400).json({ message: "Nombre, precio y stock son obligatorios." });
+    return res.status(400).json({ message: "Nombre, Precio y Stock son obligatorios." });
   }
 
   try {
@@ -110,7 +110,7 @@ app.put("/api/productos/:id", async (req, res) => {
     const [rows] = await pool.query("SELECT id, nombre, descripcion, precio, stock FROM productos WHERE id = ?", [id]);
     res.json(rows[0]);
   } catch (err) {
-    handleError(res, err, "No se pudo actualizar el producto.");
+    handleError(res, err, "No se pudo actualizar el Producto.");
   }
 });
 
@@ -124,7 +124,7 @@ app.delete("/api/productos/:id", async (req, res) => {
     }
     res.json({ message: "Producto eliminado correctamente." });
   } catch (err) {
-    handleError(res, err, "No se pudo eliminar el producto.");
+    handleError(res, err, "No se pudo eliminar el Producto.");
   }
 });
 
